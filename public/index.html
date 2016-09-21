@@ -74,7 +74,7 @@
                     <td><h5>Location<h5></td>
                     <td><h5>Magnitude</h5></td>
                     <tr ng-repeat="earthquake in earthquakes | filter: between('magnitude', n) | orderBy: ['magnitude', lastWord, firstWord]">
-                      <td><a ng-click="open(earthquake)">{{ earthquake.place }}</a></td>
+                      <td><a ng-click="open(earthquake)">{{ earthquake.location }}</a></td>
                       <td>{{ earthquake.magnitude }}</td>
                     </tr>
                   </table>

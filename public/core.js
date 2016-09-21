@@ -11,8 +11,12 @@ function mainController($scope, $http, $modal) {
             var parsed = data["features"];
             for (var i = 0; i < parsed.length; i++) {
                 var newEarthquake = { 
-                                        "place": parsed[i]["properties"]["place"] + "\n",
-                                        "magnitude": parsed[i]["properties"]["mag"] + "\n"
+                                        "location": parsed[i]["properties"]["place"] + "\n",
+                                        "magnitude": parsed[i]["properties"]["mag"] + "\n",
+                                        "time": new Date(parsed[i]["properties"]["time"]).toUTCString() + "\n",
+                                        "latitude": parsed[i]["geometry"]["coordinates"][0] + "\n",
+                                        "longitude": parsed[i]["geometry"]["coordinates"][1] + "\n",
+                                        "depth": parsed[i]["geometry"]["coordinates"][2] + "km\n"
                                     };
                 $scope.earthquakes.push(newEarthquake);
             }
@@ -28,19 +32,19 @@ function mainController($scope, $http, $modal) {
     };
 
     $scope.lastWord = function(item) {
-        placeArray = item["place"].split(",");
+        placeArray = item["location"].split(",");
         return placeArray[placeArray.length - 1];
     };
 
     $scope.firstWord = function(item) {
-        placeArray = item["place"].split(",");
+        placeArray = item["location"].split(",");
         return placeArray[0];
     };
 
     // MODAL WINDOW
     $scope.open = function(earthquake) {
         var modalInstance = $modal.open({
-            controller: "mainController",
+            controller: "ModalInstanceCtrl",
             templateUrl: 'myModalContent.html',
             resolve: {
                 earthquake: function() {
@@ -51,6 +55,12 @@ function mainController($scope, $http, $modal) {
     };
 
 }
+
+earthquakesApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, earthquake)
+{
+    $scope.earthquake = earthquake;
+
+});
 
 earthquakesApp.filter('range', function() {
   return function(input, total) {

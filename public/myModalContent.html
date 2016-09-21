@@ -1,0 +1,16 @@
+<div class="modal-content">
+
+	<div class="modal-header">
+	    <h4>More details about the earthquake {{ earthquake.location }}</h4>
+	</div>
+
+	<div class="modal-body">
+	    <table>
+	    	<tr ng-repeat="(key, value) in earthquake">
+	            <td>{{ key }}</td>
+	            <td>{{ value }}</td>
+	        </tr>
+        </table>
+	</div>
+
+</div>
