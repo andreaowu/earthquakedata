@@ -14,7 +14,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 
 // listen (start app with node server.js) ======================================
-app.listen(8080);
+app.listen(process.env.PORT || 3000);
 console.log("App listening on port 8080");
 
 // API docs: http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php

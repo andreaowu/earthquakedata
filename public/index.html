@@ -4,7 +4,6 @@
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="earthquakesApp">
 	<head>
-	    <!-- META -->
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
@@ -14,14 +13,15 @@
       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
-      <script src="core.js"></script>
+      <script src="js/core.js"></script>
 
       <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
-      <link rel="stylesheet" type="text/css" href="custom.css">
+      <link rel="stylesheet" type="text/css" href="css/custom.css">
 
 
 	    <script>
+      // Gets the accordion to work properly
 			$(document).ready(function() {
 			    function close_accordion_section() {
 			        $('.accordion .accordion-section-title').removeClass('active');
@@ -46,12 +46,6 @@
 			        e.preventDefault();
 			    });
 			});
-
-      // $(document).ready(function(){
-      //     $("#myBtn").click(function(){
-      //         $("#myModal").modal();
-      //     });
-      // });
 
 		</script>
 	</head>
@@ -78,11 +72,11 @@
                       <td>{{ earthquake.magnitude }}</td>
                     </tr>
                   </table>
-                </div>
+                </div><!-- for accordion-section-content-->
 
-  				    </div>
-            </div>
-			    </div>
+  				    </div><!-- for ng-repeat-->
+            </div><!-- for accordion-section-->
+			    </div><!-- for accordion-->
 
 	    </div><!-- for container-->
 	</body>
