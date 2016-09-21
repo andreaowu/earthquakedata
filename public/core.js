@@ -1,6 +1,6 @@
-var earthquakesApp = angular.module('earthquakesApp', []);
+var earthquakesApp = angular.module('earthquakesApp', ['ui.bootstrap']);
 
-function mainController($scope, $http) {
+function mainController($scope, $http, $modal) {
     $scope.formData = {};
 
     $scope.earthquakes = [];
@@ -36,6 +36,20 @@ function mainController($scope, $http) {
         placeArray = item["place"].split(",");
         return placeArray[0];
     };
+
+    // MODAL WINDOW
+    $scope.open = function(earthquake) {
+        var modalInstance = $modal.open({
+            controller: "mainController",
+            templateUrl: 'myModalContent.html',
+            resolve: {
+                earthquake: function() {
+                    return earthquake;
+                }
+            }
+        });
+    };
+
 }
 
 earthquakesApp.filter('range', function() {

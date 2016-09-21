@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- modal box: http://www.webdesignerdepot.com/2012/10/creating-a-modal-window-with-html5-and-css3/ -->
+
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="earthquakesApp">
 	<head>
@@ -7,15 +9,17 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
 	    <title>Earthquakes</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
+      <script src="core.js"></script>
 
-	    <!-- SCROLLS -->
-	    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-	    <link rel="stylesheet" type="text/css" href="custom.css">
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="custom.css">
 
-	    <!-- SPELLS -->
-	    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
-	    <script src="core.js"></script>
 
 	    <script>
 			$(document).ready(function() {
@@ -42,6 +46,13 @@
 			        e.preventDefault();
 			    });
 			});
+
+      // $(document).ready(function(){
+      //     $("#myBtn").click(function(){
+      //         $("#myModal").modal();
+      //     });
+      // });
+
 		</script>
 	</head>
 
@@ -54,25 +65,26 @@
 	            <h1>Earthquake Data</h1>
 	        </div>
 
-	     	<div class="accordion">
-			    <div class="accordion-section">
-			    	<div ng-repeat="n in [] | range: 9" >
+  	     	<div class="accordion">
+  			    <div class="accordion-section">
+  			    	<div ng-repeat="n in [] | range: 9" >
 				        <a class="accordion-section-title" href="#accordion{{n}}"><span>Magnitude {{n}} to {{n + 1}}</span><span class="plusMinus">+</span></a>
-				        <div id="accordion{{n}}" class="accordion-section-content">
-				            <table>
-								<td><h5>Location<h5></td>
-								<td><h5>Magnitude</h5></td>
-								<tr ng-repeat="earthquake in earthquakes | filter: between('magnitude', n) | orderBy: ['magnitude', lastWord, firstWord]">
-									<td>{{ earthquake.place }}</td>
-									<td>{{ earthquake.magnitude }}</td>
-								</tr>
-							</table>
-				        </div><!--end .accordion-section-content-->
-				    </div><!--end ng-repeat-->
-			    </div><!--end .accordion-section-->
-			</div><!--end .accordion-->
+                <div id="accordion{{n}}" class="accordion-section-content">
+                  <table>
+                    <td><h5>Location<h5></td>
+                    <td><h5>Magnitude</h5></td>
+                    <tr ng-repeat="earthquake in earthquakes | filter: between('magnitude', n) | orderBy: ['magnitude', lastWord, firstWord]">
+                      <td><a ng-click="open(earthquake)">{{ earthquake.place }}</a></td>
+                      <td>{{ earthquake.magnitude }}</td>
+                    </tr>
+                  </table>
+                </div>
 
-	    </div>
+  				    </div>
+            </div>
+			    </div>
+
+	    </div><!-- for container-->
 	</body>
 </html>
 
