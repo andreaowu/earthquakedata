@@ -11,13 +11,13 @@ function mainController($scope, $http, $modal) {
             var parsed = data["features"];
             for (var i = 0; i < parsed.length; i++) {
                 var newEarthquake = { 
-                                        "location": parsed[i]["properties"]["place"] + "\n",
-                                        "magnitude": parsed[i]["properties"]["mag"] + "\n",
-                                        "time": new Date(parsed[i]["properties"]["time"]).toUTCString() + "\n",
-                                        "latitude": parsed[i]["geometry"]["coordinates"][0] + "\n",
-                                        "longitude": parsed[i]["geometry"]["coordinates"][1] + "\n",
-                                        "depth": parsed[i]["geometry"]["coordinates"][2] + "km\n"
-                                    };
+                        "location": parsed[i]["properties"]["place"] + "\n",
+                        "magnitude": parsed[i]["properties"]["mag"] + "\n",
+                        "time": new Date(parsed[i]["properties"]["time"]).toUTCString() + "\n",
+                        "latitude": parsed[i]["geometry"]["coordinates"][0] + "\n",
+                        "longitude": parsed[i]["geometry"]["coordinates"][1] + "\n",
+                        "depth": parsed[i]["geometry"]["coordinates"][2] + "km\n"
+                    };
                 $scope.earthquakes.push(newEarthquake);
             }
         })
@@ -63,6 +63,13 @@ function mainController($scope, $http, $modal) {
 earthquakesApp.controller('ModalInstanceCtrl', function ($scope, $modalInstance, earthquake)
 {
     $scope.earthquake = earthquake;
+
+    $scope.keys = function(obj) {
+        var hashKeyInd = Object.keys(obj).indexOf("$$hashKey");
+        console.log(Object.keys(obj));
+        console.log(hashKeyInd);
+        return obj ? Object.keys(obj).splice(0, hashKeyInd) : [];
+    };
 
 });
 

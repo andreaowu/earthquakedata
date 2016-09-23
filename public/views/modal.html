@@ -6,9 +6,9 @@
 
 	<div class="modal-body">
 	    <table>
-	    	<tr ng-repeat="(key, value) in earthquake">
+	    	<tr ng-repeat="key in keys(earthquake)">
 	            <td>{{ key }}</td>
-	            <td>{{ value }}</td>
+	            <td>{{ earthquake[key] }}</td>
 	        </tr>
         </table>
 	</div>

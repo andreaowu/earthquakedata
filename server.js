@@ -31,8 +31,7 @@ app.get('/api/all', function(req, res) {
 	});
 });
 
-
 // Loads the file on the browser
 app.get('*', function(req, res) {
-    res.sendFile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
