@@ -3,7 +3,7 @@ Application showing historic earthquakes' data
 
 Built using AngularJS, Node.js, and Express.
 
-Deployed [a here] (http://earthquakedata.herokuapp.com/).
+Deployed [here] (http://earthquakedata.herokuapp.com/).
 
 Application Design
 ===========
