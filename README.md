@@ -8,7 +8,7 @@ Deployed [here] (http://earthquakedata.herokuapp.com/).
 Application Design
 ===========
 ## Run the application
-Make sure you have Node installed. Go into the root directory (with all the files) and run 'node server'. Open a browser, and go to localhost:3000 to see the page.
+If you want to deploy this locally instead of accessing it at the link above, make sure you have Node installed. Go into the root directory (with all the files) and run 'node server'. Open a browser, and go to localhost:3000 to see the page.
 
 ## Server
 The server-side code is implemented in server.js. The server gets started, and the API called by the client is in this file. There's only one API: get all the earthquake data from earthquake.usgs.gov.
